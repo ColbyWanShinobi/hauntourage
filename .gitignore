@@ -1,0 +1,9 @@
+.vagrant/
+*.log
+*.tar.gz
+*.key
+*.crt
+*.pem
+certs/accounts
+object-storage.env
+.DS_Store
