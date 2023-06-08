@@ -18,3 +18,5 @@ I want to deploy multiple sites to one server using a docker container for each 
 On vagrant, for local development just run ```vagrant up```
 
 Make sure to update ```/etc/hosts``` with any domains that are listed in ```sites/active```
+
+You will probably need to change the local IP address to match your subnet

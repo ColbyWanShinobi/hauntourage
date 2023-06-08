@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.vbguest.auto_update = false
   config.vm.define "hauntourage"
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/jammy64"
   config.vm.network "private_network", ip: '192.168.56.187'
   config.vm.synced_folder ".", "/opt/hauntourage"
   config.ssh.insert_key = false
