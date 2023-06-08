@@ -13,7 +13,7 @@ fi
 
 current_script=${0}
 script_path=$(dirname ${current_script})
-. ${script_path}/yantakara.env # Import environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
 
 # Remove old Docker container if it exists
 container_name="nginx-proxy"
@@ -29,6 +29,7 @@ docker run -d \
 --name "${container_name}" \
 -p 80:80 \
 -p 443:443 \
+-p 2368:2368 \
 -v /var/run/docker.sock:/tmp/docker.sock:ro \
 -v ${root_path}/certs:/etc/nginx/certs \
 -v ${root_path}/nginx/vhost.d:/etc/nginx/vhost.d \

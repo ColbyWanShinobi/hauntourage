@@ -17,7 +17,7 @@ script_path=$(dirname ${current_script})
 echo "Current Path: ${script_path}"
 pwd
 ls -alh
-. ${script_path}/yantakara.env # Import environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
 
 echo "This script will provision the host server. It will get the server ready for application installation."
 

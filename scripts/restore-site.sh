@@ -25,8 +25,8 @@ fi
 
 current_script=${0}
 script_path=$(dirname ${current_script})
-. ${script_path}/yantakara.env # Import environment variables from a config file
-#. ${script_path}/object-storage.env # Import object storage environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
+#. .${script_path}/object-storage.env # Import object storage environment variables from a config file
 
 domain_name=${1}
 site_path="${root_path}/sites/active/${domain_name}"
@@ -58,7 +58,7 @@ then
   #Determine site type
   site_type=$(grep site_type ${site_path}/config.env | cut -f2 -d=)
   echo "Found site type: ${site_type} for domain: ${domain_name}"
-  restore_script=${root_path}/restore-${site_type}.sh
+  restore_script=${root_path}/_restore-${site_type}.sh
   if [[ -f "${restore_script}" ]]
   then
     echo "Found restore script: ${restore_script} for site type: ${site_type}"

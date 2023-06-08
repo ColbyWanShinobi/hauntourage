@@ -13,7 +13,7 @@ fi
 
 current_script=${0}
 script_path=$(dirname ${current_script})
-. ${script_path}/yantakara.env # Import environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
 
 #####################################
 # Functions must be declared first...
@@ -69,8 +69,8 @@ function start_site {
   if [[ -f "${site_config_file}" ]]
   then    
     echo "Starting container for domain: ${domain_name}"
-    site_provision_script="${root_path}/provision-${site_type}.sh"
-    proxy_provision_script="${root_path}/provision-proxy.sh"
+    site_provision_script="${root_path}/scripts/_provision-${site_type}.sh"
+    proxy_provision_script="${root_path}/scripts/_provision-proxy.sh"
     echo ${site_provision_script} ${domain_name} ${local_site_flag} ${site_path}
     ${site_provision_script} ${domain_name} ${local_site_flag} ${site_path}
     sudo docker restart "${domain_name}" | true

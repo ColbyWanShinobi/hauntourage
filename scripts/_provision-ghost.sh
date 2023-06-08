@@ -34,26 +34,28 @@ sudo docker kill "${container_name}" | true
 sudo docker rm "${container_name}" | true
 
 #Checking to see if the site is local
-  site_env=$(grep site_env ${site_path}/config.env | cut -f2 -d=)
-  if [[ ${site_env} == "local" ]]
-  then
-    echo "Starting docker container: '${container_name}' for domain: ${domain_name} with local cert..."
-    docker run -d \
-    --name ${container_name} \
-    --mount source=${docker_volume},target=${docker_volume_target} \
-    -e VIRTUAL_HOST=${virtual_host} \
-    -v ${site_path}/${site_config_file}:${site_config_path}/config.production.json \
-    --restart=always \
-    ${docker_image}
-  else
-    echo "Stating docker container: '${container_name}' for domain: ${domain_name} with letsencrypt cert..."
-    docker run -d \
-    --name ${container_name} \
-    --mount source=${docker_volume},target=${docker_volume_target} \
-    -e VIRTUAL_HOST=${virtual_host} \
-    -e LETSENCRYPT_HOST=${virtual_host} \
-    -e LETSENCRYPT_EMAIL=${admin_email} \
-    -v ${site_path}/${site_config_file}:${site_config_path}/config.production.json \
-    --restart=always \
-    ${docker_image}
-  fi
+site_env=$(grep site_env ${site_path}/config.env | cut -f2 -d=)
+if [[ ${site_env} == "local" ]]
+then
+  echo "Starting docker container: '${container_name}' for domain: ${domain_name} with local cert..."
+  docker run -d \
+  --name ${container_name} \
+  --mount source=${docker_volume},target=${docker_volume_target} \
+  -e VIRTUAL_HOST=${virtual_host} \
+  -v ${site_path}/${site_config_file}:${site_config_path}/config.production.json \
+  --restart=always \
+  ${docker_image}
+else
+  echo "Staring docker container: '${container_name}' for domain: ${domain_name} with letsencrypt cert..."
+  docker run -d \
+  --name ${container_name} \
+  --mount source=${docker_volume},target=${docker_volume_target} \
+  -e VIRTUAL_HOST=${virtual_host} \
+  -e LETSENCRYPT_HOST=${virtual_host} \
+  -e LETSENCRYPT_EMAIL=${admin_email} \
+  -v ${site_path}/${site_config_file}:${site_config_path}/config.production.json \
+  --restart=always \
+  ${docker_image}
+fi
+echo "waiting 20 seconds before continuing..."
+sleep 20

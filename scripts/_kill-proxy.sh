@@ -13,7 +13,7 @@ fi
 
 current_script=${0}
 script_path=$(dirname ${current_script})
-. ${script_path}/yantakara.env # Import environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
 
 echo "Killing Reverse Proxy..."
 

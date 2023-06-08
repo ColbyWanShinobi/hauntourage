@@ -13,7 +13,7 @@ fi
 
 current_script=${0}
 script_path=$(dirname ${current_script})
-. ${script_path}/yantakara.env # Import environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
 
 #####################################
 # Functions must be declared first...
@@ -51,7 +51,7 @@ function provision_site {
     #Determine site type
     local site_type=$(grep site_type ${site_path}/config.env | cut -f2 -d=)
     echo -e "Found site type: ${site_type} for domain: ${domain_name}"
-    provision_script=${root_path}/provision-${site_type}.sh
+    provision_script=${root_path}/scripts/_provision-${site_type}.sh
     if [[ -f "${provision_script}" ]]
     then
       echo "Found provision script: ${provision_script} for site type: ${site_type}"

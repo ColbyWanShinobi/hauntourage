@@ -5,10 +5,10 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.vbguest.auto_update = false
-  config.vm.define "Yantakara"
+  config.vm.define "hauntourage"
   config.vm.box = "ubuntu/bionic64"
-  config.vm.network "private_network", ip: '192.168.69.101'
-  config.vm.synced_folder ".", "/opt/yantakara"
+  config.vm.network "private_network", ip: '192.168.56.187'
+  config.vm.synced_folder ".", "/opt/hauntourage"
   config.ssh.insert_key = false
   config.vm.provision :shell, path: "vagrant-provision.sh"
   config.vm.provider "virtualbox" do |v|

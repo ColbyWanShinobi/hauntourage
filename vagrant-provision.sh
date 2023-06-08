@@ -11,5 +11,5 @@ then
   exit 1;
 fi
 
-cd /opt/yantakara
+cd /opt/hauntourage/scripts
 ./provision-host.sh

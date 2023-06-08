@@ -13,7 +13,7 @@ fi
 
 current_script=${0}
 script_path=$(dirname ${current_script})
-. ${script_path}/yantakara.env # Import environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
 
 #####################################
 # Functions must be declared first...
@@ -41,7 +41,7 @@ function backup_site {
     #Determine site type
     local site_type=$(grep site_type ${site_path}/config.env | cut -f2 -d=)
     echo "Found site type: ${site_type} for domain: ${domain_name}"
-    backup_script=${root_path}/backup-${site_type}.sh
+    backup_script=${root_path}/_backup-${site_type}.sh
     if [[ -f "${backup_script}" ]]
     then
       echo "Found backup script: ${backup_script} for site type: ${site_type}"

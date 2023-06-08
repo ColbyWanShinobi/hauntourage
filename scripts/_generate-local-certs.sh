@@ -13,7 +13,7 @@ fi
 
 current_script=$0
 script_path=$(dirname ${current_script})
-. ${script_path}/yantakara.env # Import environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
 
 function check_site {
   local domain_name=${1}
@@ -37,6 +37,7 @@ function check_site {
 
     if [[ ${local_site_flag}=true ]]
     then
+      mkdir -p ${root_path}/certs
       key_filename=${domain_name}.key
       cert_config_file=${root_path}/certs/${domain_name}.conf
       

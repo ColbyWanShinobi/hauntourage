@@ -13,9 +13,9 @@ fi
 
 current_script=${0}
 script_path=$(dirname ${current_script})
-. ${script_path}/yantakara.env # Import environment variables from a config file
+. .${script_path}/hauntourage.env # Import environment variables from a config file
 
 #Base server configuration has been completed. Now you can execute any application specific provisioning scripts
-${script_path}/generate-local-certs.sh
-${script_path}/provision-proxy.sh
-${script_path}/provision-sites.sh
+${script_path}/_generate-local-certs.sh
+${script_path}/_provision-proxy.sh
+${script_path}/_provision-sites.sh
